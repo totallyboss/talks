@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import withStyles from 'react-jss';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
+const API = 'https://api.jsonbin.io/b/';
 const API1 = 'https://api.jsonbin.io/b/5b302697ff58130c9a78fd0f'; // Vaughn
 const API2 = 'https://api.jsonbin.io/b/5b3026e3261ab84817a87e4a'; // Joel
 const API3 = 'https://api.jsonbin.io/b/5b30276f9bc3d973f056dd6d'; // Candace, 2 entries
@@ -15,10 +17,10 @@ const Entry = ({entry}) => (
   <div key={entry.assignmentid}>
     <p>Name: {entry.studentname}</p>
     <p>Assignment: {entry.assignment}</p>
-    <p>{entry.date}</p>
-    <p>{entry.counselpoint}</p>
-    <p>{entry.location}</p>
-    <p>{entry.assistantname}</p>
+    <p>Date: {entry.date}</p>
+    <p>Counsel Point: {entry.counselpoint}</p>
+    <p>School: {entry.location}</p>
+    <p>Assistant: {entry.assistantname}</p>
   </div>
 );
 
