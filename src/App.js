@@ -4,6 +4,12 @@ import Student from './Student';
 import withStyles from 'react-jss';
 
 const styles = {
+  '@global': {
+    body: {
+      background: '#F0F0F0',
+    },
+  },
+
   root: {
     margin: '20px',
   }

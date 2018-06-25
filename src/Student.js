@@ -4,28 +4,50 @@ import withStyles from 'react-jss';
 const API = 'https://w465z10em8.execute-api.ap-southeast-2.amazonaws.com/prod/slips';
 
 const styles = {
-  root: {
-    border: 'solid 1px #C0C0C0',
-    padding: '20px',
-    width: ''
+  heading: {
+    fontSize: '22px',
+  },
+
+  student: {
+    borderRadius: '4px',
+    background: '#FFF',
+    boxShadow: '0 2px 4px #C0C0C0',
+    marginBottom: '20px',
+    overflow: 'hidden',
+  },
+
+  subheading: {
+    fontSize: '18px',
+    padding: '10px 20px',
+    background: '#506DA3',
+    color: '#FFF',
+    margin: 0,
+  },
+
+  details: {
+    padding: '10px 20px 10px',
   }
+
 };
 
-const Part = ({ talk }) => (
-  <div key={talk.assignmentid}>
-    <p>Name: {talk.studentname}</p>
-    <p>{talk.assistantname === 'N/A' ? '' : `Assistant: ${talk.assistantname}`}</p>
-    <p>Date: {talk.date}</p>
-    <p>Counsel Point: {talk.counselpoint}</p>
-    <p>Assignment: {talk.assignment}</p>
-    <p>To be given in the {talk.location}</p>
+const Part = ({ talk, classes }) => (
+  <div key={talk.assignmentid} className={classes.student}>
+    <h2 className={classes.subheading}>Assignment</h2>
+    <div className={classes.details}>
+      <p><span>Name:</span> {talk.studentname}</p>
+      <p>{talk.assistantname === 'N/A' ? '' : `Assistant: ${talk.assistantname}`}</p>
+      <p>Date: {talk.date}</p>
+      <p>Counsel Point: {talk.counselpoint}</p>
+      <p>Assignment: {talk.assignment}</p>
+      <p>To be given in the {talk.location}</p>
+    </div>
   </div>
 );
 
-const StudentParts = ({ data }) => (
+const StudentParts = ({ data, classes }) => (
   <div>
     {data.map(talk => (
-      <Part key={talk.assignmentid} talk={talk} />
+      <Part key={talk.assignmentid} talk={talk} classes={classes}/>
     ))}
   </div>
 );
@@ -63,8 +85,9 @@ class Student extends Component {
     }
 
     return (
-      <div className={classes.root}>
-        <StudentParts data={data} />
+      <div>
+        <h1 className={classes.heading}>Our Christian Life and Ministry Meeting Assignment</h1>
+        <StudentParts data={data} classes={classes}/>
       </div>
     )
   }
