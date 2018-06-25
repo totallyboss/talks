@@ -25,7 +25,7 @@ const Part = ({ talk }) => (
 const StudentParts = ({ data }) => (
   <div>
     {data.map(talk => (
-      <Part key={data.assignmentid} talk={talk} />
+      <Part key={talk.assignmentid} talk={talk} />
     ))}
   </div>
 );
