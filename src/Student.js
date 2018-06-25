@@ -5,10 +5,9 @@ const API = 'https://w465z10em8.execute-api.ap-southeast-2.amazonaws.com/prod/sl
 
 const styles = {
   root: {
+    border: 'solid 1px #C0C0C0',
     padding: '20px',
-  },
-  talk: {
-
+    width: ''
   }
 };
 
@@ -56,8 +55,12 @@ class Student extends Component {
   }
 
   render() {
-    const { data } = this.state;
+    const { data, isLoading } = this.state;
     const { classes } = this.props;
+
+    if (isLoading) {
+      return <p>Loading</p>
+    }
 
     return (
       <div className={classes.root}>
